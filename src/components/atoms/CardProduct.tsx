@@ -2,6 +2,8 @@
 import { Product } from "../../@types/Product";
 import { pricewhithdescont } from "../../utils/functionMoney";
 import { priceFormater } from "../../utils/priceFormater";
+import { Star } from 'phosphor-react'
+import RatingStars from "./RatingStars";
 
 interface CardProductProps {
   product: Product
@@ -33,9 +35,10 @@ export default function CardProduct({ product }: CardProductProps) {
           <span className="font-bold text-xl">
             {priceFormater(product.price)}
           </span>
-
         }
+        <RatingStars rating={product.reputation} />
       </div>
+
     </div>
   )
 }

@@ -7,9 +7,11 @@ import { useEffect, useState } from "react";
 import { newsCourses } from "../services/courses";
 import { Product } from "../@types/Product";
 import ListRowProducts from "../components/molecules/ListRowProducts";
+import { newsmaterials } from "../services/materials";
 
 export default function Home() {
   const [newCourses, setNewCourses] = useState<Product[] | null>()
+  const [newMaterials, setNewMaterials] = useState<Product[] | null>()
 
   const data = [
     "https://img.freepik.com/psd-gratuitas/modelo-de-banner-de-cursos-online_23-2148636281.jpg?w=2000",
@@ -18,6 +20,7 @@ export default function Home() {
 
   async function loadPage() {
     setNewCourses(await newsCourses())
+    setNewMaterials(await newsmaterials())
   }
 
   useEffect(() => {
@@ -39,9 +42,9 @@ export default function Home() {
             </Carousel.Item>
           })}
         </Carousel>
-        <div className="p-3">
+        <div className=" flex flex-col p-3 gap-4">
           <ListRowProducts title="Novos Cursos" products={newCourses} />
-          <ListRowProducts title="Novos Cursos" products={newCourses} />
+          <ListRowProducts title="Essenciais para volta as aulas" products={newMaterials} />
         </div>
 
       </main>
