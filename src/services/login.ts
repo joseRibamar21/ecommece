@@ -8,7 +8,7 @@ interface loginServiceProps{
 export async function loginService({email, password}: loginServiceProps){
   const findUser = users_mock.filter(e=> e.email === email && e.password=== password)
   await new Promise(function(resolve, reject) { 
-    setTimeout(function() { resolve(10); }, 3000);
+    setTimeout(function() { resolve(10); }, 500);
   }).then()
 
   if(!findUser){

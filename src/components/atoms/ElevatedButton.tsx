@@ -1,7 +1,9 @@
 import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
+import { Circle } from "phosphor-react"
 
 interface ElevatedButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>{
   children: React.ReactNode
+  loading?: boolean
 }
 
 export default function ElevatedButton(props: ElevatedButtonProps){
@@ -13,6 +15,6 @@ export default function ElevatedButton(props: ElevatedButtonProps){
   `}
   {...props}
   >
-    {props.children}
+    {props.loading? <Circle size={25} className="animate-spin"/> :props.children}
   </button>
 }

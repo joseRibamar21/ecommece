@@ -27,6 +27,7 @@ export function AuthContextProvider({ children }: AuthProviderProps) {
     try {
       setIsUserLoading(true)
       const user = await loginService({email,password}) 
+      console.log(user)
       setCookie(undefined, 'nextauth.user', JSON.stringify(
         user
       ), { maxAge: 24 * 60 * 60 * 5 })
