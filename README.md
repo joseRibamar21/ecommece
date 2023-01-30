@@ -2,7 +2,7 @@
 
 Projeto de simulação de um e-comerce.
 
-Clique [https://ecommece.vercel.app/](aqui) para ver a pagina em produção.
+Clique [aki](https://ecommece.vercel.app/) para ver a pagina em produção.
 
 ## Tecnologias
 
