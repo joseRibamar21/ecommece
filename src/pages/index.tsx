@@ -30,7 +30,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Login</title>
+        <title>e-commerce</title>
       </Head>
 
       <main>

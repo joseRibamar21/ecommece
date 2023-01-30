@@ -1,7 +1,7 @@
 export const products_mock = [
     {
         id: 1,
-        category: "Curso",
+        category: "courses",
         subCategories: [
             {
                 id: 1,
@@ -18,7 +18,7 @@ export const products_mock = [
     },
     {
         id: 2,
-        category: "Curso",
+        category: "courses",
         subCategories: [
             {
                 id: 2,
@@ -35,7 +35,7 @@ export const products_mock = [
     },
     {
         id: 3,
-        category: "Curso",
+        category: "courses",
         subCategories: [
             {
                 id: 3,
@@ -56,7 +56,7 @@ export const products_mock = [
     },
     {
         id: 4,
-        category: "Materiais",
+        category: "materials",
         subCategories: [
             {
                 id: 5,
@@ -81,7 +81,7 @@ export const products_mock = [
     },
     {
         id: 5,
-        category: "Materiais",
+        category: "materials",
         subCategories: [
             {
                 id: 7,
