@@ -2,7 +2,6 @@ import Head from "next/head";
 import Image from "next/image";
 import Input from "../../components/atoms/Input";
 import ElevatedButton from "../../components/atoms/ElevatedButton";
-import Link from "next/link";
 import { useAuth } from "../../hooks/useAuth";
 import { FormEvent, useState } from "react";
 import { toast } from "react-toastify";
@@ -72,7 +71,7 @@ export default function Login() {
           </form>
           <div>
             <span>Não possui conta?</span>
-            <Link href='/newuser' className="font-semibold text-tertiary">cadastre aqui</Link>
+            <span className="font-semibold text-tertiary cursor-pointer" onClick={()=>{Router.replace('/singup')}}>cadastre aqui</span>
           </div>
         </div>
         <div className="hidden md:visible md:flex flex-1">

@@ -3,11 +3,13 @@ import { setCookie, destroyCookie, parseCookies } from "nookies"
 import Router from 'next/router'
 import { User } from "../@types/User";
 import { loginService } from "../services/login";
+import { newUserService } from "../services/newuser";
 
 export interface AuthContextDataProps {
   user: User | null;
   isUserLoading: boolean;
   singIn: (email: string, password: string) => Promise<void>;
+  singUp: (name: string, email: string, password: string) => Promise<void>;
   singOut(): void;
 }
 
@@ -25,6 +27,23 @@ export function AuthContextProvider({ children }: AuthProviderProps) {
     try {
       setIsUserLoading(true)
       const user = await loginService({email,password}) 
+      console.log(user)
+      setCookie(undefined, 'nextauth.user', JSON.stringify(
+        user
+      ), { maxAge: 24 * 60 * 60 * 5 })
+      setUser(user)
+    } catch (error) {
+      console.log(error)
+      throw error;
+    } finally {
+      setIsUserLoading(false);
+    }
+  }
+
+  async function singUp(name: string, email: string, password: string) {
+    try {
+      setIsUserLoading(true)
+      const user = await newUserService({name, email, password})
       console.log(user)
       setCookie(undefined, 'nextauth.user', JSON.stringify(
         user
@@ -59,6 +78,7 @@ export function AuthContextProvider({ children }: AuthProviderProps) {
   return (
     <AuthContext.Provider value={{
       singIn,
+      singUp,
       singOut,
       isUserLoading,
       user

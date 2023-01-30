@@ -10,15 +10,15 @@ export default function NavBar() {
   return <div className="flex flex-row justify-between h-16 bg-primary items-center px-8">
     <h1 className="text-white cursor-pointer" onClick={()=>Router.push("/")} >E-commerce</h1>
     <div className="flex gap-4">
-      <LinkNav href="">
+     {/*  <LinkNav href="">
         M. Didáticos
       </LinkNav>
       <LinkNav href="">
         Cursos
-      </LinkNav>
+      </LinkNav> */}
     </div>
     <div className="flex flex-row gap-10 items-center">
-      {user?.id? <span className="text-white">{user.name}</span> :  <Link href='/login' className="flex flex-row items-center cursor-pointer">
+      {user?.id? <span className="text-white">{user.name}</span> :  <Link href='/singin' className="flex flex-row items-center cursor-pointer">
         <User size={35} color="white"/>
         <span className="text-white">Entrar</span>
       </Link>}

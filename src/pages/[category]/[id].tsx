@@ -96,8 +96,11 @@ export default function OneMaterial({ product, category }: OneMaterialProps) {
 
         </div>
 
-        <div className="flex m-7 p-3 border-gray-600 border-[1px] shadow-2xl rounded-xl">
-          {product.description}
+        <div className="flex flex-col m-7 p-3 border-gray-300 border-[1px] shadow-2xl rounded-xl">
+          <h4>
+            Descrição
+          </h4>
+          <p>{product.description}</p>
         </div>
 
         <div className=" flex flex-col p-3 gap-4">

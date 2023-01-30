@@ -63,7 +63,7 @@ export default function CartPage() {
         
         </div>
         <div className="p-3">
-          <ElevatedButton onClick={()=>{user?.id? Router.push('/gratters') :Router.push('/login')}}>
+          <ElevatedButton onClick={()=>{user?.id? Router.push('/gratters') :Router.push('/singin')}}>
             Finalizar Compra
           </ElevatedButton>
         </div>

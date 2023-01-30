@@ -7,13 +7,23 @@ interface newUserServiceProps{
   password: string
 } 
 
-export function newUserService({name, email, password}: newUserServiceProps){
+export async function newUserService({name, email, password}: newUserServiceProps){
+  if(users_mock.find(e=> e.email == email)){
+    console.log("AKIII")
+    throw Error("Usuário já cadastrado")
+  }
+
   const generateCode = new ShortUniqueId({ length: 10 })
   const code = String(generateCode())
-  users_mock.push({
+  await new Promise(function(resolve, reject) { 
+    setTimeout(function() { resolve(10); }, 500);
+  }).then()
+  const newUser = {
     id: code,
     name,
     email,
     password
-  })
+  }
+  users_mock.push(newUser)
+  return newUser
 }
