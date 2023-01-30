@@ -2,97 +2,82 @@ import { createContext, ReactNode, useEffect, useState } from "react";
 import { setCookie, destroyCookie, parseCookies } from "nookies"
 import Router from 'next/router'
 import { Product } from "../@types/Product";
-import { Card } from "../@types/Card";
+import { Cart } from "../@types/Cart";
 
-export interface CardContextDataProps {
-  card: Card[] | null;
-  addCard(product:Product): void;
-  removeCard(product:Product): void;
-  clearCard():void;
+export interface CartContextDataProps {
+  cart: Cart[] | null;
+  addCart(product:Product): void;
+  removeCart(product:Product): void;
+  clearCart():void;
 }
 
-interface CardProviderProps {
+interface CartProviderProps {
   children: ReactNode;
 }
 
-export const CardContext = createContext({} as CardContextDataProps);
+export const CartContext = createContext({} as CartContextDataProps);
 
-export function CardContextProvider({ children }: CardProviderProps) {
-  const [card, setCard] = useState<Card[]>([]);
+export function CartContextProvider({ children }: CartProviderProps) {
+  const [cart, setCart] = useState<Cart[]>([]);
 
-  async function addCard(product:Product ) {
+  async function addCart(product:Product ) {
     try {
-      const index = card.findIndex(e=> e.product.id == product.id);
-      if(index > 0){
+      const index = cart.findIndex(e=> e.product.id == product.id);
+      let cart2 = cart
+      if(index > -1){
         let updateProduct = {
-          quant: card[index].quant++,
+          quant: cart[index].quant++,
           product
         }
-        card[index] = updateProduct
-        setCard([...card]);
+        cart[index] = updateProduct
+        setCart([...cart]);
       }else{
-        setCard([...card,{quant:1,product}])
+        cart2 = [...cart,{quant:1,product}]
+        setCart(cart2)
+        
       }
-     
-      setCookie(undefined, 'ecommerce.card', JSON.stringify(
-        card
-      ), { maxAge: 24 * 60 * 60 * 5 })
     } catch (error) {
-      console.log(error)
       throw error;
     } 
   }
 
-  function removeCard(product:Product) {
+  function removeCart(product:Product) {
     try {
-      const index = card.findIndex(e=> e.product.id == product.id);
-      if(index > 0){
-        if(card[index].quant>1){
+      const index = cart.findIndex(e=> e.product.id == product.id);
+      let cart2 = cart
+      if(index > -1){
+        if(cart[index].quant>0){
           let updateProduct = {
-            quant: card[index].quant--,
+            quant: cart[index].quant--,
             product
           }
-          card[index] = updateProduct
-          setCard([...card]);
+          cart[index] = updateProduct
+          cart2 = [...cart]
+          setCart(cart2);
         }else{
-          card.splice(index)
-          setCard([...card])
+          cart2 = cart
+          cart.splice(index)
+          setCart([...cart])
         }
       }
-     
-      setCookie(undefined, 'ecommerce.card', JSON.stringify(
-        card
-      ), { maxAge: 24 * 60 * 60 * 5 })
     } catch (error) {
-      console.log(error)
       throw error;
     } 
   }
 
-  function clearCard(){
-    setCookie(undefined, 'ecommerce.card', JSON.stringify(
-      []
-    ), { maxAge: 24 * 60 * 60 * 5 })
+  function clearCart(){
+    setCart([])
   }
 
-  useEffect(()=>{
-    const { "ecommerce.card": card } = parseCookies()
-    if(card){
-      const data = JSON.parse(card)
-      setCard(data)
-    }else{
-      setCard([])
-    }
-  },[])
 
   return (
-    <CardContext.Provider value={{
-      card,
-      addCard,
-      removeCard,
-      clearCard
+    <CartContext.Provider value={{
+      cart,
+      addCart,
+      removeCart,
+      clearCart
     }}>
       {children}
-    </CardContext.Provider>
+    </CartContext.Provider>
   )
 }

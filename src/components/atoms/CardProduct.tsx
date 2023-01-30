@@ -2,8 +2,9 @@
 import { Product } from "../../@types/Product";
 import { pricewhithdescont } from "../../utils/functionMoney";
 import { priceFormater } from "../../utils/priceFormater";
-import { Star } from 'phosphor-react'
 import RatingStars from "./RatingStars";
+import Link from "next/link";
+import Router from "next/router"
 
 interface CardProductProps {
   product: Product
@@ -11,7 +12,7 @@ interface CardProductProps {
 
 export default function CardProduct({ product }: CardProductProps) {
   return (
-    <div className="flex flex-col w-[242px] cursor-pointer rounded-lg shadow-lg shadow-black">
+    <div className="flex flex-col w-[242px] cursor-pointer rounded-lg shadow-lg shadow-black" onClick={()=> Router.push(`/${product.category}/${product.id}`)}>
       <div>
         <img src={product.banner} alt={product.name} className="max-w-[240px] max-h-[135px] rounded-t-lg" />
       </div>
@@ -38,7 +39,6 @@ export default function CardProduct({ product }: CardProductProps) {
         }
         <RatingStars rating={product.reputation} />
       </div>
-
     </div>
   )
 }

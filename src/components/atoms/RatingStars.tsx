@@ -20,6 +20,9 @@ export default function RatingStars({rating}: RatingStars){
   if(rating> 80){
     cont++
   }
+  if(rating> 90){
+    cont++
+  }
 
   for (let index = 0; index < cont; index++) {
     listStars.push( index)

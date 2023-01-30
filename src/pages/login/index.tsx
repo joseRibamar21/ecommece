@@ -6,10 +6,11 @@ import Link from "next/link";
 import { useAuth } from "../../hooks/useAuth";
 import { FormEvent, useState } from "react";
 import { toast } from "react-toastify";
+import Router from "next/router";
 
 export default function Login() {
 
-  const { singIn,isUserLoading } = useAuth()
+  const { singIn, isUserLoading } = useAuth()
   const [dataForm, setDataForm] = useState({
     email: "",
     password: ""
@@ -17,15 +18,15 @@ export default function Login() {
 
   const onChangeInput = (e: { target: { name: string; value: string; }; }) => setDataForm({ ...dataForm, [e.target.name]: e.target.value });
 
-
   async function handleClickLogin(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+    event?.preventDefault();
     try {
-      await singIn(dataForm.email,dataForm.password)
-      throw new Error
+      await singIn(dataForm.email, dataForm.password)
+      Router.back()
+      console.log("AKIII")
     } catch (e) {
-      console.log(e) 
-      toast("Usuário não encontrado!",{type: "error"})
+      console.log(e)
+      toast("Usuário não encontrado!", { type: "error" })
     }
   }
 
@@ -44,29 +45,29 @@ export default function Login() {
           <form action="" onSubmit={handleClickLogin} className="flex flex-col gap-4 w-[100%] max-w-sm">
             <div className="flex flex-col gap-2">
               <label htmlFor="email">Email</label>
-              <Input type="email" 
-                name="email" 
-                id="email" 
+              <Input type="email"
+                name="email"
+                id="email"
                 disabled={isUserLoading}
-                placeholder="exemplo@exemplo.com" 
+                placeholder="exemplo@exemplo.com"
                 onChange={onChangeInput}
                 required
-                />
+              />
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="password">Senha</label>
-              <Input 
-              type="password" 
-              name="password" 
-              id="password" 
-              disabled={isUserLoading}
-              onChange={onChangeInput}
-              required/>
+              <Input
+                type="password"
+                name="password"
+                id="password"
+                disabled={isUserLoading}
+                onChange={onChangeInput}
+                required />
             </div>
             <div className="pt-10">
-            <ElevatedButton type="submit" loading={isUserLoading}>
-              Entrar
-            </ElevatedButton>
+              <ElevatedButton onClick={()=>{}} loading={isUserLoading}>
+                Entrar
+              </ElevatedButton>
             </div>
           </form>
           <div>
@@ -77,7 +78,7 @@ export default function Login() {
         <div className="hidden md:visible md:flex flex-1">
           <Image src="/beautiful.png" alt="beautiful" width={600} height={800} className="w-[100%]" />
         </div>
-        
+
       </main>
     </>
   )

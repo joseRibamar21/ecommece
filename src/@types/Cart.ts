@@ -1,6 +1,6 @@
 import { Product } from "./Product"
 
-export type Card = {
+export type Cart = {
   quant: number
   product: Product
 }

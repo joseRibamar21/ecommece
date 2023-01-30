@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { createContext, ReactNode, useEffect, useState } from "react";
 import { setCookie, destroyCookie, parseCookies } from "nookies"
 import Router from 'next/router'
@@ -21,7 +20,6 @@ export const AuthContext = createContext({} as AuthContextDataProps);
 export function AuthContextProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User | null>(null)
   const [isUserLoading, setIsUserLoading] = useState(false)
-  const router = useRouter()
 
   async function singIn(email: string, password: string) {
     try {
