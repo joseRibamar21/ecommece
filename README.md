@@ -4,6 +4,8 @@ Projeto de simulação de um e-comerce.
 
 Clique [aki](https://ecommece.vercel.app/) para ver a pagina em produção.
 
+Para ver o projeto no [figma](https://www.figma.com/file/RIB5OlBcEAyDoRd9wX3VTo/ECOMMERCE?node-id=0%3A1&t=N1KVyCgrRWRApWqu-1).
+
 ## Tecnologias
 
 Next Js 13.0.1

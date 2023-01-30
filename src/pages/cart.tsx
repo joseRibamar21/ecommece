@@ -11,7 +11,7 @@ import Router from "next/router"
 import { useAuth } from "../hooks/useAuth"
 
 export default function CartPage() {
-  const { cart } = useCart()
+  const { cart, clearCart } = useCart()
   const [priceP, setpriceP] = useState<number>(0)
   const [priceT, setpriceT] = useState<number>(0)
   const [selectedOption, setSelectedOption] = useState("");
@@ -35,7 +35,7 @@ export default function CartPage() {
         <NavBar />
 
         <div className="flex flex-col m-6 bg-slate-200 border-[2px] border-gray-300 rounded-lg shadow-xl">
-          <div className=" bg-tertiary rounded-t-lg p-2" >
+          <div className=" bg-primary rounded-t-lg p-2" >
             <h2 className="text-white">
               Carrinho
             </h2>
@@ -51,7 +51,7 @@ export default function CartPage() {
               </div>
             })}
           </div>
-            <div className="flex justify-end bg-tertiary rounded-b-lg py-2 px-4 text-white text-lg" >
+            <div className="flex justify-end bg-primary rounded-b-lg py-2 px-4 text-white text-lg" >
               {priceFormater(priceT)}
             </div>
         </div>
@@ -63,7 +63,10 @@ export default function CartPage() {
         
         </div>
         <div className="p-3">
-          <ElevatedButton onClick={()=>{user?.id? Router.push('/gratters') :Router.push('/singin')}}>
+          <ElevatedButton onClick={()=>{
+            user?.id? Router.push('/gratters') :Router.push('/singin')
+              clearCart()
+            }}>
             Finalizar Compra
           </ElevatedButton>
         </div>
