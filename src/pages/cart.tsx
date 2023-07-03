@@ -28,7 +28,7 @@ export default function CartPage() {
   return (
     <>
       <Head>
-        <title>e-commerce</title>
+        <title>Carrinnho</title>
       </Head>
 
       <main>
