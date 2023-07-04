@@ -12,8 +12,6 @@ import TagManager from 'react-gtm-module'
 
 ReactGA.initialize('G-59D5CKV0JH');
 
-
-
 const tagManagerArgs = {
   gtmId: 'G-59D5CKV0JH'
 }
@@ -25,7 +23,7 @@ history.listen(location => {
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
-
+  ReactGA.send({})
    /* useEffect(() => 
     ReactGA.send({ hitType: "pageview", page: window.location.pathname })
     

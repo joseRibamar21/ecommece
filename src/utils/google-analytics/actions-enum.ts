@@ -1,0 +1,3 @@
+enum ActionsEnum{
+  click = 'click',
+}
