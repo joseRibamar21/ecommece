@@ -16,7 +16,7 @@ export default function CardProduct({ product }: CardProductProps) {
     <div className="flex flex-col w-[242px] cursor-pointer rounded-lg shadow-lg shadow-black" 
     onClick={()=> {
       TrackGoogleAnalyticsEvent(
-        ActionsEnum.click.toString(),
+        "click",
         product.name,
         window.location.pathname
       );
