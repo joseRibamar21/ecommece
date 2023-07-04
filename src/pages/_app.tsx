@@ -17,18 +17,20 @@ const tagManagerArgs = {
 }
 
 const history = createBrowserHistory();
-history.listen(location => {
-  ReactGA.set({ page: location.location.pathname });
-  ReactGA.send(location.location.pathname);
-});
+
 
 function MyApp({ Component, pageProps }: AppProps) {
-  ReactGA.send({})
-   /* useEffect(() => 
-    ReactGA.send({ hitType: "pageview", page: window.location.pathname })
+  /* ReactGA.send({}) */
+   useEffect(() => {
+    history.listen(location => {
+      ReactGA.set({ page: location.location.pathname });
+      ReactGA.send(location.location.pathname);
+    });
+   }
+   /*  ReactGA.send({ hitType: "pageview", page: window.location.pathname }) */
     
   , [])
- */
+
 
   return <>
     <AuthContextProvider>
