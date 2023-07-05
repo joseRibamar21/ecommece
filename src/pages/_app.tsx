@@ -16,20 +16,24 @@ const tagManagerArgs = {
   gtmId: 'G-59D5CKV0JH'
 }
 
-const history = createBrowserHistory();
+
 
 
 function MyApp({ Component, pageProps }: AppProps) {
   /* ReactGA.send({}) */
-   useEffect(() => {
-    history.listen(location => {
-      ReactGA.set({ page: location.location.pathname });
-      ReactGA.send(location.location.pathname);
-    });
-   }
-   /*  ReactGA.send({ hitType: "pageview", page: window.location.pathname }) */
-    
-  , [])
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const history = createBrowserHistory();
+      history.listen(location => {
+        ReactGA.set({ page: location.location.pathname });
+        ReactGA.send(location.location.pathname);
+      });
+    }
+
+  }
+    /*  ReactGA.send({ hitType: "pageview", page: window.location.pathname }) */
+
+    , [])
 
 
   return <>
