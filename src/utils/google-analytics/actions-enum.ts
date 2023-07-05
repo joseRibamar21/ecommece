@@ -1,3 +1,0 @@
-enum ActionsEnum{
-  click = 'click',
-}
