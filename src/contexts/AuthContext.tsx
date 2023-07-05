@@ -70,7 +70,7 @@ export function AuthContextProvider({ children }: AuthProviderProps) {
   useEffect(()=>{
     const { "nextauth.user": user } = parseCookies()
     if(user){
-      const objectUser = JSON.parse(user)
+      const objectUser = JSON.parse(user??{}) 
       setUser(objectUser)
     }
   },[])
