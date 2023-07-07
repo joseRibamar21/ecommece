@@ -52,6 +52,14 @@ export default function OneMaterial({ product, category }: OneMaterialProps) {
     <>
       <Head>
         <title>e-commerce</title>
+        <meta name={`categoria/${category}`} content='Bem vindo ao Ecommerce' />
+        <meta property='og:title' content={`${product.name} - Produto`} />
+  <meta property='og:description' content={`${product.description}`} />
+  <meta
+    property='og:url'
+    content={`https://ecommece.vercel.app/courses/${product.id}`}
+  />
+  <meta property='og:type' content='website' />
       </Head>
 
       <main>

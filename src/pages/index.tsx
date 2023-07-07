@@ -31,6 +31,7 @@ export default function Home() {
     <>
       <Head>
         <title>e-commerce</title>
+        <meta name='home' content='Bem vindo ao Ecommerce' />
       </Head>
 
       <main>

@@ -32,7 +32,8 @@ export default function Login() {
   return (
     <>
       <Head>
-        <title>Login</title>
+        <title>categorias</title>
+        <meta name='Categorias' content='catregorias' />
       </Head>
 
       <main className="flex flex-row justify-center">

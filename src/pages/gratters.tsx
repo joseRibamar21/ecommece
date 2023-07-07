@@ -11,6 +11,7 @@ export default function Gratters() {
     <>
       <Head>
         <title>Parabens pela Compra</title>
+        <meta name='gratters' content='Parabens por finalizar a compra' />
       </Head>
 
       <main className="flex flex-col">

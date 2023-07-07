@@ -28,7 +28,8 @@ export default function CartPage() {
   return (
     <>
       <Head>
-        <title>Carrinnho</title>
+        <title>Carrinho</title>
+        <meta name='card' content='Carrinho de compras' />
       </Head>
 
       <main>
