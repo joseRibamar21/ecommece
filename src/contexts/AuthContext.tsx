@@ -30,6 +30,10 @@ export function AuthContextProvider({ children }: AuthProviderProps) {
       ReactGA.ga('config', 'G-59D5CKV0JH', {
         'user_id': 'Joseee',
       });
+
+      ReactGA.gtag('set','user_data',{
+        email: "jose.21rb@outlook.com"
+      })
       
       const user = {
         id: "123",
