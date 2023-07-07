@@ -22,6 +22,7 @@ export default function Login() {
     try {
       await singIn(dataForm.email, dataForm.password)
       Router.back()
+  
       console.log("AKIII")
     } catch (e) {
       console.log(e)

@@ -28,12 +28,9 @@ export function AuthContextProvider({ children }: AuthProviderProps) {
     try {
       setIsUserLoading(true)
       ReactGA.ga('create', 'G-59D5CKV0JH', {
-        'cookieName': 'gaCookie',
-        'cookieDomain': 'blog.example.co.uk',
-        'cookieExpires': 60 * 60 * 24 * 28,  // Time in seconds.
-        'cookieUpdate': 'false',
-        'cookieFlags': 'SameSite=None; Secure',
+        'cookieName': 'Joseee',
       });
+      
       const user = {
         id: "123",
         name: "JOSEEEE",
@@ -42,6 +39,7 @@ export function AuthContextProvider({ children }: AuthProviderProps) {
       setCookie(undefined, 'nextauth.user', JSON.stringify(
         user
       ), { maxAge: 24 * 60 * 60 * 5 })
+      
       setUser(user)
     } catch (error) {
       console.log(error)
