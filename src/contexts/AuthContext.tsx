@@ -27,8 +27,8 @@ export function AuthContextProvider({ children }: AuthProviderProps) {
   async function singIn(email: string, password: string) {
     try {
       setIsUserLoading(true)
-      ReactGA.ga('create', 'G-59D5CKV0JH', {
-        'cookieName': 'Joseee',
+      ReactGA.ga('config', 'G-59D5CKV0JH', {
+        'user_id': 'Joseee',
       });
       
       const user = {
@@ -39,8 +39,6 @@ export function AuthContextProvider({ children }: AuthProviderProps) {
       setCookie(undefined, 'nextauth.user', JSON.stringify(
         user
       ), { maxAge: 24 * 60 * 60 * 5 })
-
-      setCookie(undefined,'_ga','Joseeeee')
       
       setUser(user)
     } catch (error) {
