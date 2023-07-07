@@ -1,8 +1,8 @@
 import Head from "next/head";
 import Image from "next/image";
-import Input from "../../components/atoms/Input";
-import ElevatedButton from "../../components/atoms/ElevatedButton";
-import { useAuth } from "../../hooks/useAuth";
+import Input from "../components/atoms/Input";
+import ElevatedButton from "../components/atoms/ElevatedButton";
+import { useAuth } from "../hooks/useAuth";
 import { FormEvent, useState } from "react";
 import { toast } from "react-toastify";
 import Router from "next/router";
@@ -32,8 +32,9 @@ export default function Login() {
   return (
     <>
       <Head>
-        <title>categorias</title>
-        <meta name='Categorias' content='catregorias' />
+        <title>SingIn</title>
+        <meta name='SingIn' content='Login' />
+        <meta property='og:type' content='website' />
       </Head>
 
       <main className="flex flex-row justify-center">

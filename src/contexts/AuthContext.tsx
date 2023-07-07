@@ -4,6 +4,7 @@ import Router from 'next/router'
 import { User } from "../@types/User";
 import { loginService } from "../services/login";
 import { newUserService } from "../services/newuser";
+import ReactGA from "react-ga4";
 
 export interface AuthContextDataProps {
   user: User | null;
@@ -26,7 +27,17 @@ export function AuthContextProvider({ children }: AuthProviderProps) {
   async function singIn(email: string, password: string) {
     try {
       setIsUserLoading(true)
-      const user = await loginService({email,password}) 
+      ReactGA.ga('create', 'G-59D5CKV0JH', {
+        'cookieName': 'gaCookie',
+        'cookieDomain': 'blog.example.co.uk',
+        'cookieExpires': 60 * 60 * 24 * 28,  // Time in seconds.
+        'cookieUpdate': 'false',
+        'cookieFlags': 'SameSite=None; Secure',
+      });
+      const user = {
+        id: "123",
+        name: "JOSEEEE",
+      }/* await loginService({email,password})  */
       console.log(user)
       setCookie(undefined, 'nextauth.user', JSON.stringify(
         user
@@ -45,6 +56,7 @@ export function AuthContextProvider({ children }: AuthProviderProps) {
       setIsUserLoading(true)
       const user = await newUserService({name, email, password})
       console.log(user)
+      
       setCookie(undefined, 'nextauth.user', JSON.stringify(
         user
       ), { maxAge: 24 * 60 * 60 * 5 })

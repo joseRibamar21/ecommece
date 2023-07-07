@@ -18,7 +18,6 @@ const tagManagerArgs = {
 
 
 
-
 function MyApp({ Component, pageProps }: AppProps) {
   /* ReactGA.send({}) */
   useEffect(() => {
@@ -27,6 +26,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       history.listen(location => {
         ReactGA.set({ page: location.location.pathname });
         ReactGA.send(location.location.pathname);
+        console.log("Location:",location.location.pathname)
       });
     }
 

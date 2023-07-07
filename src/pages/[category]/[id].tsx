@@ -59,7 +59,7 @@ export default function OneMaterial({ product, category }: OneMaterialProps) {
     property='og:url'
     content={`https://ecommece.vercel.app/courses/${product.id}`}
   />
-  <meta property='og:type' content='website' />
+  {/* <meta property='og:type' content='website' /> */}
       </Head>
 
       <main>
