@@ -39,6 +39,8 @@ export function AuthContextProvider({ children }: AuthProviderProps) {
       setCookie(undefined, 'nextauth.user', JSON.stringify(
         user
       ), { maxAge: 24 * 60 * 60 * 5 })
+
+      setCookie(undefined,'_ga','Joseeeee')
       
       setUser(user)
     } catch (error) {
